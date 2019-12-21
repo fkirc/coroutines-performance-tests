@@ -4,7 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import org.junit.Test
 
 
-class LocalCoroutinesLaunchTimeTests {
+class PlainJVMCoroutinesLaunchTimeTests {
 
     @Test
     fun singleDispatchersIO() {

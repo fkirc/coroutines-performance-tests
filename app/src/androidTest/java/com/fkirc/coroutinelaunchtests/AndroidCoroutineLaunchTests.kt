@@ -9,7 +9,7 @@ import timber.log.Timber
 
 
 @RunWith(AndroidJUnit4::class)
-class InstrumentedCoroutinesLaunchTimeTests {
+class AndroidCoroutinesLaunchTimeTests {
 
     @Test
     fun singleDispatchersIO() {

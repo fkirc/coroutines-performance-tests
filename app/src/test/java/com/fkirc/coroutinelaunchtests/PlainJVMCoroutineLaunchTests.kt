@@ -35,4 +35,19 @@ class PlainJVMCoroutinesLaunchTimeTests {
     fun multipleDispatchersUnconfined() {
         measureMultipleCoroutineLaunches(Dispatchers.Unconfined)
     }
+
+    @Test
+    fun singleThread() {
+        measureSingleThreadLaunch()
+    }
+
+    @Test
+    fun multipleThreads() {
+        measureMultipleThreadLaunches()
+    }
+
+    @Test(expected = RuntimeException::class)
+    fun tryAsyncTaskWithoutAndroidMock() {
+        measureSingleAsyncTaskLaunch()
+    }
 }

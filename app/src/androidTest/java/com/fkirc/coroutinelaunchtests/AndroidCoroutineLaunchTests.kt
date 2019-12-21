@@ -1,11 +1,9 @@
 package com.fkirc.coroutinelaunchtests
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.fkirc.coroutinelaunchtests.util.PrimitiveAsyncTask
 import kotlinx.coroutines.Dispatchers
 import org.junit.Test
 import org.junit.runner.RunWith
-import timber.log.Timber
 
 
 @RunWith(AndroidJUnit4::class)
@@ -52,22 +50,22 @@ class AndroidCoroutinesLaunchTimeTests {
     }
 
     @Test
+    fun singleThread() {
+        measureSingleThreadLaunch()
+    }
+
+    @Test
+    fun multipleThreads() {
+        measureMultipleThreadLaunches()
+    }
+
+    @Test
     fun singleAsyncTask() {
-        runAndAssertTestTime(maxTimeInMillis = MAX_LAUNCH_TIME_SINGLE_COROUTINE) {
-            PrimitiveAsyncTask.doAsync {
-                Timber.d("Hello world from AsyncTask")
-            }
-        }
+        measureSingleAsyncTaskLaunch()
     }
 
     @Test
     fun multipleAsyncTasks() {
-        runAndAssertTestTime(maxTimeInMillis = MAX_LAUNCH_TIME_MULTIPLE_COROUTINES) {
-            for (counter in 1..NUMBER_OF_COROUTINES) {
-                PrimitiveAsyncTask.doAsync {
-                    Timber.d("Hello world from AsyncTask $counter")
-                }
-            }
-        }
+        measureMultipleAsyncTaskLaunches()
     }
 }

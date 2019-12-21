@@ -2,15 +2,18 @@ package com.fkirc.coroutinelaunchtests
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.Dispatchers
+import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.MethodSorters
 
 
 @RunWith(AndroidJUnit4::class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class AndroidCoroutinesLaunchTimeTests {
 
     @Test
-    fun singleDispatchersIO() {
+    fun a1_singleDispatchersIO() {
         measureSingleCoroutineLaunch(Dispatchers.IO)
     }
 

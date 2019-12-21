@@ -1,13 +1,15 @@
 package com.fkirc.coroutinelaunchtests
 
 import kotlinx.coroutines.Dispatchers
+import org.junit.FixMethodOrder
 import org.junit.Test
+import org.junit.runners.MethodSorters
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class PlainJVMCoroutinesLaunchTimeTests {
 
     @Test
-    fun singleDispatchersIO() {
+    fun a1_singleDispatchersIO() {
         measureSingleCoroutineLaunch(Dispatchers.IO)
     }
 

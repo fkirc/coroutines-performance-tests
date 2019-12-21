@@ -1,6 +1,5 @@
 package com.fkirc.coroutinelaunchtests
 
-import com.fkirc.coroutinelaunchtests.util.PrimitiveAsyncTask
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -25,23 +24,3 @@ fun measureMultipleCoroutineLaunches(coroutineContext: CoroutineContext) {
         }
     }
 }
-
-fun measureSingleAsyncTask() {
-    runAndAssertTestTime(maxTimeInMillis = 1) {
-        PrimitiveAsyncTask.doAsync {
-            Timber.d("Hello world from AsyncTask")
-        }
-    }
-}
-
-fun measureMultipleAsyncTasks() {
-    val numberOfAsyncTasks = 50
-    runAndAssertTestTime(maxTimeInMillis = 2) {
-        for (counter in 1..numberOfAsyncTasks) {
-            PrimitiveAsyncTask.doAsync {
-                Timber.d("Hello world from AsyncTask $counter")
-            }
-        }
-    }
-}
-

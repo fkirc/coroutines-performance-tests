@@ -53,30 +53,20 @@ class InstrumentedCoroutinesLaunchTimeTests {
 
     @Test
     fun singleAsyncTask() {
-        measureSingleAsyncTask()
+        runAndAssertTestTime(maxTimeInMillis = MAX_LAUNCH_TIME_SINGLE_COROUTINE) {
+            PrimitiveAsyncTask.doAsync {
+                Timber.d("Hello world from AsyncTask")
+            }
+        }
     }
 
     @Test
     fun multipleAsyncTasks() {
-        measureMultipleAsyncTasks()
-    }
-}
-
-
-fun measureSingleAsyncTask() {
-    runAndAssertTestTime(maxTimeInMillis = 1) {
-        PrimitiveAsyncTask.doAsync {
-            Timber.d("Hello world from AsyncTask")
-        }
-    }
-}
-
-fun measureMultipleAsyncTasks() {
-    val numberOfAsyncTasks = 50
-    runAndAssertTestTime(maxTimeInMillis = 2) {
-        for (counter in 1..numberOfAsyncTasks) {
-            PrimitiveAsyncTask.doAsync {
-                Timber.d("Hello world from AsyncTask $counter")
+        runAndAssertTestTime(maxTimeInMillis = MAX_LAUNCH_TIME_MULTIPLE_COROUTINES) {
+            for (counter in 1..NUMBER_OF_COROUTINES) {
+                PrimitiveAsyncTask.doAsync {
+                    Timber.d("Hello world from AsyncTask $counter")
+                }
             }
         }
     }

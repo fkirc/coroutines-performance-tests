@@ -3,7 +3,7 @@ package com.fkirc.coroutinelaunchtests
 import timber.log.Timber
 import java.lang.IllegalArgumentException
 
-private fun assertTestTime(timeInNanos: Long, maxTimeInMillis: Long) {
+private fun assertTestTime(timeInNanos: Long, maxTimeInMillis: Float) {
     if (timeInNanos < 0) throw IllegalArgumentException()
     if (maxTimeInMillis <= 0) throw IllegalArgumentException()
 
@@ -15,7 +15,7 @@ private fun assertTestTime(timeInNanos: Long, maxTimeInMillis: Long) {
     }
 }
 
-fun runAndAssertTestTime(maxTimeInMillis: Long, runnable: () -> Unit) {
+fun runAndAssertTestTime(maxTimeInMillis: Float, runnable: () -> Unit) {
     val start = System.nanoTime()
     runnable()
     assertTestTime(timeInNanos = System.nanoTime() - start, maxTimeInMillis = maxTimeInMillis)

@@ -56,7 +56,7 @@ class CoroutinesLaunchTimeTests {
     }
 
     private fun measureSingleCoroutineLaunch(coroutineContext: CoroutineContext) {
-        runAndAssertTestTime(maxTimeInMillis = 2) {
+        runAndAssertTestTime(maxTimeInMillis = 1) {
             GlobalScope.launch(coroutineContext) {
                 Timber.d("Hello world from coroutine")
             }
@@ -65,7 +65,7 @@ class CoroutinesLaunchTimeTests {
 
     private fun measureMultipleCoroutineLaunches(coroutineContext: CoroutineContext) {
         val numberOfCoroutines = 50
-        runAndAssertTestTime(maxTimeInMillis = 10) {
+        runAndAssertTestTime(maxTimeInMillis = 5) {
             for (counter in 1..numberOfCoroutines) {
                 GlobalScope.launch(coroutineContext) {
                     Timber.d("Hello world from coroutine $counter")
@@ -86,7 +86,7 @@ class CoroutinesLaunchTimeTests {
     @Test
     fun multipleAsyncTasks() {
         val numberOfAsyncTasks = 50
-        runAndAssertTestTime(maxTimeInMillis = 5) {
+        runAndAssertTestTime(maxTimeInMillis = 2) {
             for (counter in 1..numberOfAsyncTasks) {
                 PrimitiveAsyncTask.doAsync {
                     Timber.d("Hello world from AsyncTask $counter")

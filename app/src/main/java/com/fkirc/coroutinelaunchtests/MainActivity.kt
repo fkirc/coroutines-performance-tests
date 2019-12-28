@@ -24,6 +24,10 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        preloadCoroutinesLibrary()
+    }
+
+    private fun preloadCoroutinesLibrary() {
         PrimitiveAsyncTask.doAsync {
             // Preload coroutine library asynchronously to avoid slow launches afterwards.
             launchSampleCoroutine("Application.onCreate async coroutine")

@@ -18,5 +18,6 @@ private fun assertTestTime(timeInNanos: Long, maxTimeInMillis: Float) {
 fun runAndAssertTestTime(maxTimeInMillis: Float, runnable: () -> Unit) {
     val start = System.nanoTime()
     runnable()
-    assertTestTime(timeInNanos = System.nanoTime() - start, maxTimeInMillis = maxTimeInMillis)
+    val nanoTime = System.nanoTime() - start
+    assertTestTime(timeInNanos = nanoTime, maxTimeInMillis = maxTimeInMillis)
 }

@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        launchSampleCoroutine("MainActivity coroutine")
+        //launchSampleCoroutine("MainActivity coroutine")
     }
 }
 
@@ -30,7 +30,7 @@ class MainApplication : Application() {
     private fun preloadCoroutinesLibrary() {
         PrimitiveAsyncTask.doAsync {
             // Preload coroutine library asynchronously to avoid slow launches afterwards.
-            launchSampleCoroutine("Application.onCreate async coroutine")
+            //launchSampleCoroutine("Application.onCreate async coroutine")
         }
     }
 }
